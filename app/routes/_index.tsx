@@ -63,7 +63,7 @@ export default function Index() {
   return (
     <div className="px-4 md:px-10 w-full pb-10 max-w-5xl">
       <h1 className=" pt-2 mb-2 md:mb-8  font-bold text-2xl lg:text-4xl">
-        青山夏樹《現代緊縛入門》翻譯出版金費募集中！！！
+        青山夏樹《現代緊縛入門》翻譯出版經費募集中！！！
       </h1>
       <div className="md:flex md:justify-between">
         <div
