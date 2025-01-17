@@ -27,7 +27,15 @@ export function getMeta({
 }
 
 
-export function replaceN2br(str: string) {
+export function replaceN2br(str) {
   if (!str) return '';
   return `${str}`.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br/>');
+}
+
+export function formatNumber(num) {
+  if (Number.isNaN(Number.parseFloat(num))) {
+    return num;
+  }
+
+  return new Intl.NumberFormat('en-US').format(num);
 }
