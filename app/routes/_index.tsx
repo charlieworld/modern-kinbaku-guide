@@ -120,7 +120,7 @@ export default function Index() {
             <div>
               <Info
                 subTitle="目前募集金額"
-                title={`$NTD ${formatNumber(loaderData.totalAmount)}`}
+                title={`NT$ ${formatNumber(loaderData.totalAmount)}`}
               />
               <Info
                 subTitle="贊助人次"
