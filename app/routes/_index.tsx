@@ -78,7 +78,7 @@ export const loader = async () => {
   let totalAmount = res
     .map((i) => i.donateAmount)
     .reduce((a, b) => {
-      return a + b;
+      return Number(a) + Number(b);
     }, 0);
   totalAmount = Number(totalAmount);
   const data = res.map((item) => {
