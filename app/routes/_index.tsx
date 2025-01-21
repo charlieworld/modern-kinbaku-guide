@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
+import { TbHandClick } from "react-icons/tb";
 
 import Introduction from "~/components/Introduction";
 import Comments from "~/components/Comments";
@@ -50,6 +51,26 @@ function ShareNow() {
   );
 }*/
 
+function FollowNow() {
+  return (
+    <a
+      className="w-full flex items-center justify-center font-bold text-primary-link border border-primary-link rounded-lg p-4"
+      href="https://forms.gle/HgjDMGA8ADUwMSdQ6"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <div>訂閱翻譯進度</div>
+      <motion.div
+        animate={{ scale: 1.2, rotate: -45 }}
+        transition={{ type: "spring", duration: 4 }}
+        className="ml-2"
+      >
+        <TbHandClick size={16} className=" text-primary-link" />
+      </motion.div>
+    </a>
+  );
+}
+
 function DonateNow() {
   return (
     <div className="relative">
@@ -72,24 +93,27 @@ function DonateNow() {
   );
 }
 
-
 export const loader = async () => {
   const res = (await loadData()) || [];
-  let totalAmount = res
+  let count = res.filter((i) => !i.remark);
+  const donner = count.length;
+
+  count = count
     .map((i) => i.donateAmount)
     .reduce((a, b) => {
       return Number(a) + Number(b);
     }, 0);
-  totalAmount = Number(totalAmount);
+  const totalAmount = Number(count);
   const data = res.map((item) => {
-    const temp = {...item}
+    const temp = { ...item };
     delete temp.donateAmount;
     delete temp.email;
     delete temp.remark;
     return temp;
-  })
+  });
   return json({
     totalAmount,
+    donner,
     data,
   });
 };
@@ -106,14 +130,16 @@ export default function Index() {
         </h1>
         <div className="md:flex md:justify-between">
           <div></div>
-          <div
-            className="md:w-2/3  flex flex-col"
-          >
+          <div className="md:w-2/3  flex flex-col">
             <div
               className=" w-full h-80 bg-contain bg-no-repeat bg-center flex flex-col-reverse"
               style={{ backgroundImage: 'url("/book_cover.jpg")' }}
             />
-            <Progress className="hidden md:block" target={TARGET} value={loaderData.totalAmount / TARGET} />
+            <Progress
+              className="hidden md:block"
+              target={TARGET}
+              value={loaderData.totalAmount / TARGET}
+            />
           </div>
 
           <div className="mt-4 md:mt-0 md:w-1/3 md:pl-8 flex flex-col justify-between">
@@ -124,12 +150,16 @@ export default function Index() {
               />
               <Info
                 subTitle="贊助人次"
-                title={`${loaderData.data.length} 人`}
+                title={`${loaderData.donner} 人`}
               />
-              <Progress className="md:hidden" target={TARGET} value={loaderData.totalAmount / TARGET} />
+              <Progress
+                className="md:hidden"
+                target={TARGET}
+                value={loaderData.totalAmount / TARGET}
+              />
             </div>
             <div>
-              <DonateNow />
+              <FollowNow />
             </div>
           </div>
         </div>
