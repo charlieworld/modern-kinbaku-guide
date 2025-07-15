@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { HiCursorClick } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { json } from "@remix-run/node";
@@ -6,6 +7,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { TbHandClick } from "react-icons/tb";
 
 import Introduction from "~/components/Introduction";
+import News from "~/components/News";
 import Comments from "~/components/Comments";
 import loadData from "~/utils/loadData";
 import { formatNumber } from "~/utils/utils";
@@ -51,6 +53,7 @@ function ShareNow() {
   );
 }*/
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function FollowNow() {
   return (
     <a
@@ -121,6 +124,38 @@ export const loader = async () => {
 export default function Index() {
   const loaderData = useLoaderData<typeof loader>();
 
+  const tabs = [
+    { label: "簡介", key: "introduction" },
+    { label: "最新消息", key: "news" },
+  ];
+
+  function TabSection() {
+    const [activeTab, setActiveTab] = useState("introduction");
+
+    return (
+      <div className="mb-4 w-full">
+        <div className="flex border-b mb-8">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              className={`px-4 py-2 font-semibold w-1/2 ${
+                activeTab === tab.key
+                  ? "border-b-2 border-primary-base text-primary-base"
+                  : "text-gray-400"
+              }`}
+              onClick={() => setActiveTab(tab.key)}
+              type="button"
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        {activeTab === "introduction" && <Introduction className="" />}
+        {activeTab === "news" && <News />}
+      </div>
+    );
+  }
+
   return (
     <>
       <CommentsMobile className="" />
@@ -148,10 +183,7 @@ export default function Index() {
                 subTitle="目前募集金額"
                 title={`NT$ ${formatNumber(loaderData.totalAmount)}`}
               />
-              <Info
-                subTitle="贊助人次"
-                title={`${loaderData.donner} 人`}
-              />
+              <Info subTitle="贊助人次" title={`${loaderData.donner} 人`} />
               <Progress
                 className="md:hidden"
                 target={TARGET}
@@ -159,13 +191,15 @@ export default function Index() {
               />
             </div>
             <div>
-              <FollowNow />
+              <DonateNow />
             </div>
           </div>
         </div>
 
         <div className="mt-8 flex">
-          <Introduction className="md:w-2/3 " />
+          <div className="md:w-2/3 ">
+            <TabSection />
+          </div>
           <Comments className="w-1/3  hidden md:block" />
         </div>
       </div>

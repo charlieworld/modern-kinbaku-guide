@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { motion } from "framer-motion";
+import classNames from "classnames";
 
 function P({ children }) {
   return <p className="mb-4">{children}</p>;
@@ -6,7 +8,15 @@ function P({ children }) {
 
 export default function Introduction({ className }) {
   return (
-    <div className={className}>
+    <motion.div
+      className={classNames("w-full", className)}
+      initial={{ opacity: 0, x: 10 }}
+      animate={{
+        opacity: 1,
+        x: 0,
+        transition: { ease: "easeOut", duration: 0.7 },
+      }}
+    >
       <div>
         <P className="">
           我們正在進行青山夏樹老師寫作的《現代緊縛入門》中文翻譯專案！
@@ -39,7 +49,9 @@ export default function Introduction({ className }) {
             https://x.com/natsukiss1018
           </a>
         </div>
-        <P><b className=" text-lg">青山夏樹（あおやま・なつき）</b></P>
+        <P>
+          <b className=" text-lg">青山夏樹（あおやま・なつき）</b>
+        </P>
         <ul className="list-disc ml-4">
           <li>1970年 出生於京都</li>
           <li>1991年 於福岡でSM club中以職業開始活動。</li>
@@ -71,6 +83,6 @@ export default function Introduction({ className }) {
           </li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }
