@@ -1,9 +1,20 @@
+/* eslint-disable react/prop-types */
+import { motion } from "framer-motion";
+import classNames from "classnames";
 
 import newsData from "../utils/NewsData";
 
-export default function News() {
+export default function News({ className }) {
   return (
-    <div className="w-full">
+    <motion.div
+      className={classNames("w-full", className)}
+      initial={{ opacity: 0, x: 10 }}
+      animate={{
+        opacity: 1,
+        x: 0,
+        transition: { ease: "easeOut", duration: 0.7 },
+      }}
+    >
       <ul className="space-y-4">
         {newsData.map((news) => (
           <li key={news.id} className="border-b p-4">
@@ -14,15 +25,19 @@ export default function News() {
                 <img
                   key={index}
                   src={image}
-                  alt={news.title ? `${news.title} - ${index + 1}` : `News ${index + 1}`}
+                  alt={
+                    news.title
+                      ? `${news.title} - ${index + 1}`
+                      : `News ${index + 1}`
+                  }
                   className="w-1/2 object-contain rounded bg-slate-100"
                 />
               ))}
             </div>
-            <p  className="mt-4">{news.content}</p>
+            <p className="mt-4">{news.content}</p>
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }

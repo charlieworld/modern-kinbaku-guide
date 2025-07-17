@@ -151,7 +151,7 @@ export default function Index() {
           ))}
         </div>
         {activeTab === "introduction" && <Introduction className="" />}
-        {activeTab === "news" && <News />}
+        {activeTab === "news" && <News className="" />}
       </div>
     );
   }
