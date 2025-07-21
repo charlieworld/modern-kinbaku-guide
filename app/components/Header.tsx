@@ -2,6 +2,7 @@ import { TbHandClick } from "react-icons/tb";
 
 import { motion } from "framer-motion";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function FollowNowButton() {
   return (
     <div className=" bg-white flex items-center justify-center rounded px-2 py-2">

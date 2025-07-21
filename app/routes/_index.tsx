@@ -13,14 +13,15 @@ import loadData from "~/utils/loadData";
 import { formatNumber } from "~/utils/utils";
 import CommentsMobile from "~/components/CommentsMobile";
 import Progress from "~/components/Progress";
+import CarouselBanner from "~/components/CarouselBanner";
 
 const TARGET = 100000;
 
-const DEFAULT_TITLE = '青山夏樹《現代緊縛入門》翻譯出版';
-const DEFAULT_DESCRIPTION = '我們正在進行青山夏樹老師寫作的《現代緊縛入門》中文翻譯專案！ 這本書籍是台灣第一本有關繩縛安全的書籍，而你的支持，將成為這項專案最重要的推動力！';
-const WEBSITE = 'https://contemporary-kinbaku-guide.site';
-const META_IMAGE = '/book_cover.jpg'
-
+const DEFAULT_TITLE = "青山夏樹《現代緊縛入門》翻譯出版";
+const DEFAULT_DESCRIPTION =
+  "我們正在進行青山夏樹老師寫作的《現代緊縛入門》中文翻譯專案！ 這本書籍是台灣第一本有關繩縛安全的書籍，而你的支持，將成為這項專案最重要的推動力！";
+const WEBSITE = "https://contemporary-kinbaku-guide.site";
+const META_IMAGE = "/cover_2.jpg";
 
 const DEFAULT_META = [
   { title: DEFAULT_TITLE },
@@ -147,12 +148,14 @@ export default function Index() {
   const loaderData = useLoaderData<typeof loader>();
 
   const tabs = [
-    { label: "簡介", key: "introduction" },
     { label: "最新消息", key: "news" },
+    { label: "簡介", key: "introduction" },
   ];
 
   function TabSection() {
-    const [activeTab, setActiveTab] = useState("introduction");
+    const [activeTab, setActiveTab] = useState("news");
+
+    /*
     const [search] = useSearchParams();
 
     useEffect(() => {
@@ -163,6 +166,7 @@ export default function Index() {
         setActiveTab("introduction");
       }
     }, [search]);
+    */
 
     return (
       <div className="mb-4 w-full">
@@ -182,8 +186,8 @@ export default function Index() {
             </button>
           ))}
         </div>
-        {activeTab === "introduction" && <Introduction className="" />}
         {activeTab === "news" && <News className="" />}
+        {activeTab === "introduction" && <Introduction className="" />}
       </div>
     );
   }
@@ -198,10 +202,7 @@ export default function Index() {
         <div className="md:flex md:justify-between">
           <div></div>
           <div className="md:w-2/3  flex flex-col">
-            <div
-              className=" w-full h-80 bg-contain bg-no-repeat bg-center flex flex-col-reverse"
-              style={{ backgroundImage: 'url("/book_cover.jpg")' }}
-            />
+            <CarouselBanner className="" />
             <Progress
               className="hidden md:block"
               target={TARGET}
@@ -223,7 +224,7 @@ export default function Index() {
               />
             </div>
             <div>
-              <DonateNow />
+              <FollowNow />
             </div>
           </div>
         </div>
