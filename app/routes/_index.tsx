@@ -16,11 +16,33 @@ import Progress from "~/components/Progress";
 
 const TARGET = 100000;
 
+const DEFAULT_TITLE = '青山夏樹《現代緊縛入門》翻譯出版';
+const DEFAULT_DESCRIPTION = '我們正在進行青山夏樹老師寫作的《現代緊縛入門》中文翻譯專案！ 這本書籍是台灣第一本有關繩縛安全的書籍，而你的支持，將成為這項專案最重要的推動力！';
+const WEBSITE = 'https://contemporary-kinbaku-guide.site';
+const META_IMAGE = '/book_cover.jpg'
+
+
+const DEFAULT_META = [
+  { title: DEFAULT_TITLE },
+  { name: "description", content: DEFAULT_DESCRIPTION },
+  { property: "og:locale", content: "zh-TW" },
+  { property: "og:type", content: "website" },
+  { property: "og:title", content: DEFAULT_TITLE },
+  { property: "og:description", content: DEFAULT_DESCRIPTION },
+  { property: "og:image", content: META_IMAGE },
+  { property: "og:image:width", content: 1200 },
+  { property: "og:image:height", content: 630 },
+  { property: "og:image:type", content: "image/jpeg" },
+  { property: "og:url", content: WEBSITE },
+  { property: "og:site_name", content: DEFAULT_TITLE },
+  { property: "twitter:title", content: DEFAULT_TITLE },
+  { property: "twitter:description", content: DEFAULT_DESCRIPTION },
+  { property: "twitter:image", content: META_IMAGE },
+  { property: "twitter:card", content: "summary_large_image" },
+];
+
 export const meta: MetaFunction = () => {
-  return [
-    { title: "青山夏樹《現代緊縛入門》翻譯出版" },
-    { name: "description", content: "青山夏樹《現代緊縛入門》翻譯出版" },
-  ];
+  return DEFAULT_META;
 };
 
 interface InfoProps {
