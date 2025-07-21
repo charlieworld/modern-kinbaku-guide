@@ -6,7 +6,7 @@ export default function Comments({ className }) {
   const loaderData = useLoaderData();
   const commentList = loaderData.data;
   return (
-      <div className={classNames(' text-center pl-4 max-h-96 overflow-y-auto',className)}>
+      <div className={classNames(' text-center pl-4  overflow-y-auto',className)}>
           <h3 className=" text-primary-base border-b border-primary-base pb-2">贊助者留言</h3>
       <div>
         {commentList.map((comment, index) => (

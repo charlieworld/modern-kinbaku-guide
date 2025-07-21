@@ -1,10 +1,25 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import classNames from "classnames";
+import ReactHtmlParser from "react-html-parser";
+import { useSearchParams } from "@remix-run/react";
 
 import newsData from "../utils/NewsData";
 
 export default function News({ className }) {
+  const [search] = useSearchParams();
+
+  useEffect(() => {
+    const news = search.get("news");
+    if (news) {
+
+      const target = document.getElementById(news);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [search]);
+
   return (
     <motion.div
       className={classNames("w-full", className)}
@@ -17,7 +32,7 @@ export default function News({ className }) {
     >
       <ul className="space-y-4">
         {newsData.map((news) => (
-          <li key={news.id} className="border-b p-4">
+          <li key={news.id} className="border-b p-4" id={news.id}>
             <h3 className="text-xl font-semibold">{news.title}</h3>
             <p className="text-gray-500 text-sm">{news.date}</p>
             <div className="flex space-x-2 mt-4">
@@ -34,7 +49,7 @@ export default function News({ className }) {
                 />
               ))}
             </div>
-            <p className="mt-4">{news.content}</p>
+            <p className="mt-4">{ReactHtmlParser(news.content)}</p>
           </li>
         ))}
       </ul>

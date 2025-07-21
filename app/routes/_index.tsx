@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiCursorClick } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useSearchParams } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
 import { TbHandClick } from "react-icons/tb";
 
@@ -131,6 +131,16 @@ export default function Index() {
 
   function TabSection() {
     const [activeTab, setActiveTab] = useState("introduction");
+    const [search] = useSearchParams();
+
+    useEffect(() => {
+      const news = search.get("news");
+      if (news) {
+        setActiveTab("news");
+      } else {
+        setActiveTab("introduction");
+      }
+    }, [search]);
 
     return (
       <div className="mb-4 w-full">
