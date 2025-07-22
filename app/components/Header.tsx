@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function FollowNowButton() {
   return (
-    <div className=" bg-white flex items-center justify-center rounded px-2 py-2">
+    <div className="flex items-center justify-center rounded px-2 py-2">
       <a
         className="flex items-center font-bold text-primary-link text-sm md:text-base"
         href="https://forms.gle/HgjDMGA8ADUwMSdQ6"

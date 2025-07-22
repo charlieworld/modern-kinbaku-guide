@@ -54,7 +54,7 @@ export default function News({ className }) {
                     />
                   ))}
                 </div>
-                <p className="mt-4  leading-6">{ReactHtmlParser(news.content)}</p>
+                <p className="mt-4  leading-8">{ReactHtmlParser(news.content)}</p>
                 <div className="flex w-full justify-end">
                   <button
                     className="mt-2 text-primary-base"
