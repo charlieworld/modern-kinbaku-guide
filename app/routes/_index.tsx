@@ -230,7 +230,7 @@ export default function Index() {
         </div>
 
         <div className="mt-8 flex">
-          <div className="md:w-2/3 ">
+          <div className="md:w-2/3 w-full">
             <TabSection />
           </div>
           <Comments className="w-1/3  hidden md:block" />
