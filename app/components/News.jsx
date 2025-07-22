@@ -35,9 +35,9 @@ export default function News({ className }) {
     >
       <ul className="space-y-4">
         {newsData.map((news) => (
-          <li key={news.id} className="border border-gray-400 p-4 rounded-lg" id={news.id}>
+          <li key={news.id} className="border border-primary-light p-4 rounded-lg" id={news.id}>
             <h3 className="text-xl font-semibold">{news.title}</h3>
-            <p className="text-gray-500 text-sm">{news.date}</p>
+            <p className="text-primary-light text-sm">{news.date}</p>
             {expandedId === news.id ? (
               <>
                 <div className="flex space-x-2 mt-4">
@@ -54,7 +54,7 @@ export default function News({ className }) {
                     />
                   ))}
                 </div>
-                <p className="mt-4">{ReactHtmlParser(news.content)}</p>
+                <p className="mt-4  leading-6">{ReactHtmlParser(news.content)}</p>
                 <div className="flex w-full justify-end">
                   <button
                     className="mt-2 text-primary-base"

@@ -23,7 +23,7 @@ export function Layout({ children }: { children: React.ReactElement }) {
           <Meta />
           <Links />
         </head>
-        <body className="text-primary-text">
+        <body className="text-primary-text bg-bg">
           <MainLayout>
 
             {children}

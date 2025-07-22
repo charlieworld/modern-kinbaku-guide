@@ -13,7 +13,7 @@ export default function Comments({ className }) {
           <div key={index} className="border-b border-gray-200 py-2">
             <div className="flex justify-between mb-2 items-center">
               <div className="text-primary-base  font-semibold">{comment.name}</div>
-              <div className="text-sm text-gray-500">{comment.createdAt}</div>
+              <div className="text-sm text-primary-light">{comment.createdAt}</div>
             </div>
             <div className="text-left text">{comment.comment}</div>
           </div>

@@ -51,7 +51,7 @@ export default function CarouselBanner({
 
   return (
     <div
-      className={`relative w-full mt-4  h-96 md:h-[35rem] overflow-hidden ${className}`}
+      className={`relative w-full mt-4  h-96 md:h-[35rem] mb-4 overflow-hidden ${className}`}
     >
       <AnimatePresence initial={false}>
         {images[current].link ? (
@@ -105,7 +105,7 @@ export default function CarouselBanner({
           </button>
         </>
       )}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2 ">
         {images.map((_, idx) => (
           <span
             key={idx}

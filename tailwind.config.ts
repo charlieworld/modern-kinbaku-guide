@@ -5,12 +5,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        bg: '#EFEFEF',
         white: "#ffffff",
         black: "#000000",
         primary: {
           link: "#AB3B3A",
-          base: "#0B346E",
-          light: '#FFB11B'
+          base: "#302e2d",
+          light: '#aca49b'
         },
         footer: {
           text: "#EECCBB",

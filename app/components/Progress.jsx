@@ -15,7 +15,7 @@ function ProgressBar({ value }) {
 export default function Progress({ target, value, className}) {
   return (
     <div className={className}>
-      <div className="text-gray-400 mb-1">
+      <div className="text-primary-light mb-1">
         <span>目標金額：</span>
         <span>{`NT$ ${formatNumber(target)}`}</span>
       </div>

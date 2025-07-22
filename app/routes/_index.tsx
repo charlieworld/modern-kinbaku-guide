@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HiCursorClick } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { json } from "@remix-run/node";
-import { useLoaderData, useSearchParams } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
 import { TbHandClick } from "react-icons/tb";
 
@@ -17,7 +17,7 @@ import CarouselBanner from "~/components/CarouselBanner";
 
 const TARGET = 100000;
 
-const DEFAULT_TITLE = "青山夏樹《現代緊縛入門》翻譯出版";
+const DEFAULT_TITLE = "出版！加油！";
 const DEFAULT_DESCRIPTION =
   "我們正在進行青山夏樹老師寫作的《現代緊縛入門》中文翻譯專案！ 這本書籍是台灣第一本有關繩縛安全的書籍，而你的支持，將成為這項專案最重要的推動力！";
 const WEBSITE = "https://contemporary-kinbaku-guide.site";
@@ -54,7 +54,7 @@ interface InfoProps {
 function Info({ subTitle, title }: InfoProps) {
   return (
     <div className="mb-4 tracking-wider">
-      <div className=" text- text-gray-400 mb-2">{subTitle}</div>
+      <div className=" text- text-primary-light mb-2">{subTitle}</div>
       <motion.h2
         className=" text-4xl"
         initial={{ scale: 0.5, opacity: 0 }}
@@ -177,7 +177,7 @@ export default function Index() {
               className={`px-4 py-2 font-semibold w-1/2 ${
                 activeTab === tab.key
                   ? "border-b-2 border-primary-base text-primary-base"
-                  : "text-gray-400"
+                  : "text-primary-light"
               }`}
               onClick={() => setActiveTab(tab.key)}
               type="button"
@@ -197,7 +197,7 @@ export default function Index() {
       <CommentsMobile className="" />
       <div className="px-4 md:px-10 w-full pb-10 max-w-5xl">
         <h1 className=" pt-2 mb-2 md:mb-8  font-bold text-2xl lg:text-4xl">
-          青山夏樹《現代緊縛入門》翻譯出版經費募集中！！！
+          {DEFAULT_TITLE}
         </h1>
         <div className="md:flex md:justify-between">
           <div></div>

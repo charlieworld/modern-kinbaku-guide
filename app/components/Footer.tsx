@@ -7,7 +7,7 @@ export default function Footer() {
     >
       <div>2025 Made by</div>
       <div>
-        <span >青山夏樹老師《現代緊縛入門》出版小組 </span>
+        <span >「緊縛學—美·技·身體之日本文化」中文化出版委員會 </span>
       </div>
       <div className="flex items-center justify-center"><span className="mr-2">with </span><FaHeart className="text-primary-link" /></div>
     </footer>
