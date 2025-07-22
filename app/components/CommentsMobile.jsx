@@ -24,7 +24,7 @@ export default function CommentsMobile({ className }) {
 
   return (
     <div
-      className={classNames("md:hidden w-full py-2 border-b border-primary-light", className)}
+      className={classNames("md:hidden w-full py-2", className)}
     >
       <Carousel
         className="relative w-full"
