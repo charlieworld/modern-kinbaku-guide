@@ -36,7 +36,7 @@ export default function Introduction({ className }) {
         <div className="flex flex-col my-4  items-center md:items-start">
           <div
             className="w-40 h-40 bg-contain bg-no-repeat bg-center rounded-full"
-            style={{ backgroundImage: 'url("/author.jpg")' }}
+            style={{ backgroundImage: `url("${import.meta.env.BASE_URL}author.jpg")` }}
           />
           <a
             className=" underline text-primary-link"

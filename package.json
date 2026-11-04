@@ -4,8 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "build": "node scripts/fetch-google-data.mjs && remix vite:build && node scripts/prerender-static.mjs",
+    "dev": "node scripts/fetch-google-data.mjs && remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc"

@@ -5,12 +5,12 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 const images = [
   {
     id: 1,
-    src: "/cover_2.jpg",
+    src: `${import.meta.env.BASE_URL}cover_2.jpg`,
     link: "https://drive.google.com/file/d/1uhQEbTXWYwEdbejNm1CFwxyAaR4eKORv/view?usp=drivesdk",
   },
   {
     id: 2,
-    src: "/cover_1.png",
+    src: `${import.meta.env.BASE_URL}cover_1.png`,
     link: null,
   },
 ];
