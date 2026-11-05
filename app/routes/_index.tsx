@@ -9,7 +9,7 @@ import { TbHandClick } from "react-icons/tb";
 import Introduction from "~/components/Introduction";
 import News from "~/components/News";
 import Comments from "~/components/Comments";
-import loadData from "~/utils/loadData";
+import { readDonations } from "~/utils/donations.server";
 import { formatNumber } from "~/utils/utils";
 import CommentsMobile from "~/components/CommentsMobile";
 import Progress from "~/components/Progress";
@@ -21,7 +21,7 @@ const DEFAULT_TITLE = "出版！加油！";
 const DEFAULT_DESCRIPTION =
   "我們正在進行青山夏樹老師寫作的《現代緊縛入門》中文翻譯專案！ 這本書籍是台灣第一本有關繩縛安全的書籍，而你的支持，將成為這項專案最重要的推動力！";
 const WEBSITE = "https://contemporary-kinbaku-guide.site";
-const META_IMAGE = "/cover_2.jpg";
+const META_IMAGE = `${import.meta.env.BASE_URL}cover_2.jpg`;
 
 const DEFAULT_META = [
   { title: DEFAULT_TITLE },
@@ -119,29 +119,8 @@ function DonateNow() {
   );
 }
 
-export const loader = async () => {
-  const res = (await loadData()) || [];
-  let count = res.filter((i) => !i.remark);
-  const donner = count.length;
-
-  count = count
-    .map((i) => i.donateAmount)
-    .reduce((a, b) => {
-      return Number(a) + Number(b);
-    }, 0);
-  const totalAmount = Number(count);
-  const data = res.map((item) => {
-    const temp = { ...item };
-    delete temp.donateAmount;
-    delete temp.email;
-    delete temp.remark;
-    return temp;
-  });
-  return json({
-    totalAmount,
-    donner,
-    data,
-  });
+export const loader = () => {
+  return json(readDonations());
 };
 
 export default function Index() {
